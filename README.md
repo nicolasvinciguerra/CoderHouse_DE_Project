@@ -1,4 +1,4 @@
-# HoderHouse Data Engineering project - OpenAQ
+# CoderHouse Data Engineering project - OpenAQ
 
 ## Project Overview
 En este proyecto se extraen datos sobre calidad del aire de la plataforma abierta "OpenAQ" mediante su API publica, se transforman utilizando Pandas y se cargan en un data warehouse en Redshift.
@@ -28,3 +28,4 @@ Este proyecto utiliza las siguientes librerias:
 - datetime
 - logging
 
+- python formatted with black (python3 -m black)
