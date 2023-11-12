@@ -27,5 +27,4 @@ Este proyecto utiliza las siguientes librerias:
 - pandas
 - datetime
 - logging
-
 - python formatted with black (python3 -m black)
