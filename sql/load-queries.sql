@@ -1,3 +1,0 @@
-BEGIN
-MERGE INTO nicolasmvinciguerra_coderhouse.dim_location
-USING
