@@ -15,9 +15,15 @@ OpenAQ is the largest open-source air quality data platform, aggregating and har
 OpenAQ API Documentation Site: https://docs.openaq.org/docs
 
 ## Usage Guide
+### Ejecucion con Docker
+Se ejecuta "docker compose up -d" en el directorio del proyecto. Para ello docker debe estar corriendo.
+Por defecto el web server es accesible por http://localhost:8080/ con usr y password "airflow", como se detalla en el archivo "docker-compose.yaml".
+Para la ejecucion de los dags se debe generar la coneccion en Airflow, segun los parametros para Redshift del archivo "config.ini".
+
+### Ejecucion como script
 Previo a ejecutar main.py, se deben ejecutar 2 scripts SQL:
-1- Ejecutar el script SQL "create tables stg y dim.sql" del directorio '/sql'. El mismo contiene la query sql para crear las tablas de staging (empiezan con el prefijo 'stg') y es donde se almacen temporalmente los datos extraidos desde la API de OpenAQ antes de su insersion en el modelo dimensional, como asi tambien las tablas del modelo estrella del DW: dos de dimensiones (con el prefijo 'dim'), y una de hechos (con el prefijo 'fact').
-2- Ejecutar el script SQL "Stored Procedure - Load DW Tables.sql" del directorio '/sql'. El mismo contiene 4 procedimientos almacenados que son ejecutados desde el flujo del programa para actualizar las tablas del modelo dimensional a partir de los datos de las tablas de staging en un determinando momento.
+1- Ejecutar el script SQL "creates.sql" del directorio '/dags/sql'. El mismo contiene la query sql para crear las tablas de staging (empiezan con el prefijo 'stg') y es donde se almacen temporalmente los datos extraidos desde la API de OpenAQ antes de su insersion en el modelo dimensional, como asi tambien las tablas del modelo estrella del DW: dos de dimensiones (con el prefijo 'dim'), y una de hechos (con el prefijo 'fact').
+2- Ejecutar el script SQL "stored_procedures.sql" del directorio '/dags/sql'. El mismo contiene 4 procedimientos almacenados que son ejecutados desde el flujo del programa para actualizar las tablas del modelo dimensional a partir de los datos de las tablas de staging en un determinando momento.
 
 ## Libraries
 Este proyecto utiliza las siguientes librerias:
