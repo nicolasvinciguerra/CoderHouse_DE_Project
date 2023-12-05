@@ -76,6 +76,7 @@ def connect_to_db(config: ConfigParser, config_section):
         logging.error(f"Error al conectarse a la base de datos: {e}.")
         raise Exception(f"Error al conectarse a la base de datos: {e}.")
 
+
 def load_to_sql(df, table_name, engine, if_exists="replace"):
     """
     Carga un DataFrame en la base de datos especificada.
