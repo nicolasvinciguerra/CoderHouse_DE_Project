@@ -1,5 +1,5 @@
 --STAR SCHEME DIMENSIONAL MODEL - CREATE TABLES
-DROP TABLE IF EXISTS dim_location;
+--DROP TABLE IF EXISTS dim_location;
 CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_location (
     id INT,
     city VARCHAR(256),
@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_location (
 DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
 SORTKEY (id); --si bien es comun filtrar por ciudad o pais no se incluyen como sortkey ya que el locationid esta correlacionado con estos campos.
 
-DROP TABLE IF EXISTS dim_parameter;
+--DROP TABLE IF EXISTS dim_parameter;
 CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_parameter (
     id INT,
-    name VARCHAR(256),
+    code VARCHAR(256),
     displayName	VARCHAR(256),
     description	VARCHAR(256),
     preferredUnit VARCHAR(256),
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_parameter (
 DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
 SORTKEY (id); --si bien es comun filtrar por el nombre del parametro, su id lo identifica univocamente con lo cual no es necesario incluirlo como sortkey.
 
-DROP TABLE IF EXISTS fact_measure;
+--DROP TABLE IF EXISTS fact_measure;
 CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.fact_measure (
     location_id INTEGER,
     parameter_code VARCHAR(20),
