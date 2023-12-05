@@ -10,6 +10,7 @@ logging.basicConfig(
 
 base_url = "https://api.openaq.org/v2"
 
+
 def load_locations(config_file, limit=1000):
     """
     Get locations from OpenAQ API
@@ -51,6 +52,7 @@ def load_locations(config_file, limit=1000):
         conn.execute(query)
         logging.info(f"Se ejecuto correctamente la query: {query}")
 
+
 def load_countries(config_file, limit=1000):
     """
     Get countries from OpenAQ API
@@ -89,6 +91,7 @@ def load_countries(config_file, limit=1000):
         conn.execute(query)
         logging.info(f"Se ejecuto correctamente la query: {query}")
 
+
 def load_parameters(config_file):
     """
     Get parameters from OpenAQ API
@@ -125,6 +128,7 @@ def load_parameters(config_file):
         conn.execute(query)
         logging.info(f"Se ejecuto correctamente la query: {query}")
 
+
 def load_measures(config_file, start_date, end_date):
     """
     Get measures from OpenAQ API
@@ -143,8 +147,7 @@ def load_measures(config_file, start_date, end_date):
         "content-type": "application/json",
     }
     endpoint = "measurements"
-    params = {"date_from": start_date,
-              "date_to": end_date}
+    params = {"date_from": start_date, "date_to": end_date}
 
     json_api = get_data(base_url, endpoint, headers, params=params)
     df_api = pd.json_normalize(data=json_api, sep="_")
@@ -163,6 +166,7 @@ def load_measures(config_file, start_date, end_date):
         logging.info(f"Ejecutando query {query}...")
         conn.execute(query)
         logging.info(f"Se ejecuto correctamente la query: {query}")
+
 
 if __name__ == "__main__":
     load_locations("config/config.ini")

@@ -33,11 +33,11 @@ def get_data(base_url, endpoint, headers, params=None):
             logging.error(
                 "Error en la extraccion de resultados del request. Formato de respuesta no esperado."
             )
-            return None
+            raise Exception(f"La peticion ha fallado. Codigo del error: {e}")
         return data
     except requests.exceptions.RequestException as e:
         logging.error(f"La peticion ha fallado. Codigo del error: {e}")
-        return None
+        raise Exception(f"La peticion ha fallado. Codigo del error: {e}")
 
 
 def connect_to_db(config: ConfigParser, config_section):
@@ -74,8 +74,7 @@ def connect_to_db(config: ConfigParser, config_section):
         return engine
     except Exception as e:
         logging.error(f"Error al conectarse a la base de datos: {e}.")
-        return None
-
+        raise Exception(f"Error al conectarse a la base de datos: {e}.")
 
 def load_to_sql(df, table_name, engine, if_exists="replace"):
     """
@@ -98,3 +97,4 @@ def load_to_sql(df, table_name, engine, if_exists="replace"):
         logging.info(f"Datos cargados exitosamente en la tabla {table_name}.")
     except Exception as e:
         logging.error(f"Error al cargar los datos en la base de datos: {e}")
+        raise Exception(f"Error al cargar los datos en la base de datos: {e}")

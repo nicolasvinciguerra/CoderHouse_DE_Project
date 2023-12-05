@@ -10,9 +10,9 @@ from scripts.main import load_locations, load_countries, load_parameters, load_m
 default_args = {"retries": 3, "retry_delay": timedelta(minutes=1)}
 
 with DAG(
-    dag_id="dag_openaq",
-    start_date=datetime(2023, 12, 1),
-    catchup=False,
+    dag_id="dag_openaq_catchup",
+    start_date=datetime(2023, 12, 3),
+    catchup=True,
     schedule_interval="0 * * * *",
     default_args=default_args,
 ) as dag:
@@ -36,7 +36,7 @@ with DAG(
     load_locations_data_task = PythonOperator(
         task_id="load_stations_data",
         python_callable=load_locations,
-        op_kwargs={"config_file": "/opt/airflow/config/config.ini", "limit": "2500"},
+        op_kwargs={"config_file": "/opt/airflow/config/config.ini", "limit": "1500"},
     )
 
     load_countries_data_task = PythonOperator(
@@ -56,8 +56,8 @@ with DAG(
         python_callable=load_measures,
         op_kwargs={
             "config_file": "/opt/airflow/config/config.ini",
-            "start_date": "{{ data_interval_start }}",
-            "end_date": "{{ data_interval_end }}",
+            "start_date": "{{ data_interval_start.strftime('%Y-%m-%dT%H:%M:%S') }}",
+            "end_date": "{{ data_interval_end.strftime('%Y-%m-%dT%H:%M:%S') }}",
         },
     )
 

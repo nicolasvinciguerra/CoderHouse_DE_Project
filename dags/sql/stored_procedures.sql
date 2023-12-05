@@ -52,13 +52,13 @@ begin
         ON dim_parameter.id = stg_parameters.id
         WHEN MATCHED THEN
             UPDATE SET
-                name = stg_parameters.name,
+                code = stg_parameters.name,
                 displayName = stg_parameters.displayName,
                 description = stg_parameters.description,
                 preferredUnit = stg_parameters.preferredUnit,
                 updated_at = current_timestamp
         WHEN NOT MATCHED THEN
-            INSERT (id, name, displayName, description, preferredUnit)
+            INSERT (id, code, displayName, description, preferredUnit)
             VALUES (stg_parameters.id, stg_parameters.name, stg_parameters.displayName, 
                     stg_parameters.description, stg_parameters.preferredUnit);
 end;
