@@ -13,7 +13,7 @@ with DAG(
     dag_id="dag_openaq_catchup",
     start_date=datetime(2023, 12, 3),
     catchup=True,
-    schedule_interval="0 * * * *",
+    schedule_interval="@daily",
     default_args=default_args,
 ) as dag:
     # task con dummy operator

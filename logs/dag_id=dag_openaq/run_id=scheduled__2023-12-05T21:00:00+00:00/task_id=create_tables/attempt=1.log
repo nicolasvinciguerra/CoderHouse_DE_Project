@@ -1,0 +1,210 @@
+[2023-12-05T22:00:02.067+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_openaq.create_tables scheduled__2023-12-05T21:00:00+00:00 [queued]>
+[2023-12-05T22:00:02.071+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_openaq.create_tables scheduled__2023-12-05T21:00:00+00:00 [queued]>
+[2023-12-05T22:00:02.072+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-05T22:00:02.077+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_tables> on 2023-12-05 21:00:00+00:00
+[2023-12-05T22:00:02.083+0000] {standard_task_runner.py:57} INFO - Started process 781 to run task
+[2023-12-05T22:00:02.092+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_openaq', 'create_tables', 'scheduled__2023-12-05T21:00:00+00:00', '--job-id', '279', '--raw', '--subdir', 'DAGS_FOLDER/dag_openaq.py', '--cfg-path', '/tmp/tmpfhs9zhfh']
+[2023-12-05T22:00:02.100+0000] {standard_task_runner.py:85} INFO - Job 279: Subtask create_tables
+[2023-12-05T22:00:02.137+0000] {task_command.py:416} INFO - Running <TaskInstance: dag_openaq.create_tables scheduled__2023-12-05T21:00:00+00:00 [running]> on host 01a38cb1bd44
+[2023-12-05T22:00:02.188+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_openaq' AIRFLOW_CTX_TASK_ID='create_tables' AIRFLOW_CTX_EXECUTION_DATE='2023-12-05T21:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-05T21:00:00+00:00'
+[2023-12-05T22:00:02.189+0000] {sql.py:274} INFO - Executing: --STAR SCHEME DIMENSIONAL MODEL - CREATE TABLES
+--DROP TABLE IF EXISTS dim_location;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_location (
+    id INT,
+    city VARCHAR(256),
+    name VARCHAR(256),
+    country_code VARCHAR(2),
+    country_name VARCHAR(50),
+    sources VARCHAR(256),
+    ismobile BOOL,
+    isanalysis BOOL,
+    sensortype VARCHAR(256),
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT,
+    updated_at timestamp without time zone
+    )
+DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
+SORTKEY (id); --si bien es comun filtrar por ciudad o pais no se incluyen como sortkey ya que el locationid esta correlacionado con estos campos.
+
+--DROP TABLE IF EXISTS dim_parameter;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_parameter (
+    id INT,
+    code VARCHAR(256),
+    displayName	VARCHAR(256),
+    description	VARCHAR(256),
+    preferredUnit VARCHAR(256),
+    updated_at timestamp without time zone
+    )
+DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
+SORTKEY (id); --si bien es comun filtrar por el nombre del parametro, su id lo identifica univocamente con lo cual no es necesario incluirlo como sortkey.
+
+--DROP TABLE IF EXISTS fact_measure;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.fact_measure (
+    location_id INTEGER,
+    parameter_code VARCHAR(20),
+    value FLOAT,
+    date_local TIMESTAMP,
+    date_utc TIMESTAMP DISTKEY, --es el campo mas comunmente utilizado para el filtrado
+    updated_at timestamp without time zone
+    )
+SORTKEY (date_utc,location_id,parameter_code);
+
+
+--STAGING TABLES
+DROP TABLE IF EXISTS stg_countries;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_countries (
+    code VARCHAR(2),
+    name VARCHAR(50)
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_locations;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_locations (
+    id INT,
+    city VARCHAR(256),
+    name VARCHAR(256),
+    entity VARCHAR(256),
+    country VARCHAR(2),
+    sources VARCHAR(256),
+    ismobile BOOL,
+    isanalysis BOOL,
+    sensortype VARCHAR(256),
+    lastupdated TIMESTAMP,
+    firstupdated TIMESTAMP,
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_parameters;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_parameters (
+    id INT,
+    name VARCHAR(256),
+    displayName	VARCHAR(256),
+    description	VARCHAR(256),
+    preferredUnit VARCHAR(256)
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_measurements;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_measurements (
+    locationId INT,
+    location VARCHAR(256),
+    parameter VARCHAR(20),
+    value FLOAT,
+    unit VARCHAR(256),
+    country VARCHAR(2),
+    city VARCHAR(256),
+    isMobile BOOL,
+    isAnalysis BOOL,
+    entity	VARCHAR(256),
+    sensorType VARCHAR(256),
+    date_utc TIMESTAMP,
+    date_local TIMESTAMP,
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT
+    )
+DISTSTYLE EVEN;
+[2023-12-05T22:00:02.194+0000] {base.py:73} INFO - Using connection ID 'coderhouse_redshift' for task execution.
+[2023-12-05T22:00:02.202+0000] {base.py:73} INFO - Using connection ID 'coderhouse_redshift' for task execution.
+[2023-12-05T22:00:03.012+0000] {sql.py:418} INFO - Running statement: --STAR SCHEME DIMENSIONAL MODEL - CREATE TABLES
+--DROP TABLE IF EXISTS dim_location;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_location (
+    id INT,
+    city VARCHAR(256),
+    name VARCHAR(256),
+    country_code VARCHAR(2),
+    country_name VARCHAR(50),
+    sources VARCHAR(256),
+    ismobile BOOL,
+    isanalysis BOOL,
+    sensortype VARCHAR(256),
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT,
+    updated_at timestamp without time zone
+    )
+DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
+SORTKEY (id); --si bien es comun filtrar por ciudad o pais no se incluyen como sortkey ya que el locationid esta correlacionado con estos campos.
+
+--DROP TABLE IF EXISTS dim_parameter;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.dim_parameter (
+    id INT,
+    code VARCHAR(256),
+    displayName	VARCHAR(256),
+    description	VARCHAR(256),
+    preferredUnit VARCHAR(256),
+    updated_at timestamp without time zone
+    )
+DISTSTYLE ALL --es una tabla de tipo SCD no muy extensa, recomendable que se replique en todos los nodos.
+SORTKEY (id); --si bien es comun filtrar por el nombre del parametro, su id lo identifica univocamente con lo cual no es necesario incluirlo como sortkey.
+
+--DROP TABLE IF EXISTS fact_measure;
+CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.fact_measure (
+    location_id INTEGER,
+    parameter_code VARCHAR(20),
+    value FLOAT,
+    date_local TIMESTAMP,
+    date_utc TIMESTAMP DISTKEY, --es el campo mas comunmente utilizado para el filtrado
+    updated_at timestamp without time zone
+    )
+SORTKEY (date_utc,location_id,parameter_code);
+
+
+--STAGING TABLES
+DROP TABLE IF EXISTS stg_countries;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_countries (
+    code VARCHAR(2),
+    name VARCHAR(50)
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_locations;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_locations (
+    id INT,
+    city VARCHAR(256),
+    name VARCHAR(256),
+    entity VARCHAR(256),
+    country VARCHAR(2),
+    sources VARCHAR(256),
+    ismobile BOOL,
+    isanalysis BOOL,
+    sensortype VARCHAR(256),
+    lastupdated TIMESTAMP,
+    firstupdated TIMESTAMP,
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_parameters;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_parameters (
+    id INT,
+    name VARCHAR(256),
+    displayName	VARCHAR(256),
+    description	VARCHAR(256),
+    preferredUnit VARCHAR(256)
+    )
+DISTSTYLE EVEN;
+
+DROP TABLE IF EXISTS stg_measurements;
+CREATE TABLE  nicolasmvinciguerra_coderhouse.stg_measurements (
+    locationId INT,
+    location VARCHAR(256),
+    parameter VARCHAR(20),
+    value FLOAT,
+    unit VARCHAR(256),
+    country VARCHAR(2),
+    city VARCHAR(256),
+    isMobile BOOL,
+    isAnalysis BOOL,
+    entity	VARCHAR(256),
+    sensorType VARCHAR(256),
+    date_utc TIMESTAMP,
+    date_local TIMESTAMP,
+    coordinates_latitude FLOAT,
+    coordinates_longitude FLOAT
+    )
+DISTSTYLE EVEN;, parameters: None
+[2023-12-05T22:00:03.427+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=dag_openaq, task_id=create_tables, execution_date=20231205T210000, start_date=20231205T220002, end_date=20231205T220003
+[2023-12-05T22:00:03.448+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-05T22:00:03.465+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
