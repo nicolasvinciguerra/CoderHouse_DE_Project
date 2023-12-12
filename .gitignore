@@ -1,0 +1,10 @@
+# Ignora archivos del sistema Mac 
+.DS_store
+
+#Ignora todos los pycache
+**/__pycache__/
+
+#Ignora los logs
+logs/
+
+.vscode/
