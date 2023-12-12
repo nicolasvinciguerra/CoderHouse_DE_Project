@@ -1,0 +1,127 @@
+[2023-12-12T01:14:08.401+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_openaq_catchup.load_parameters_data scheduled__2023-12-05T00:00:00+00:00 [queued]>
+[2023-12-12T01:14:08.588+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_openaq_catchup.load_parameters_data scheduled__2023-12-05T00:00:00+00:00 [queued]>
+[2023-12-12T01:14:08.591+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-12T01:14:08.937+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load_parameters_data> on 2023-12-05 00:00:00+00:00
+[2023-12-12T01:14:09.209+0000] {standard_task_runner.py:57} INFO - Started process 295 to run task
+[2023-12-12T01:14:09.401+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'dag_openaq_catchup', 'load_parameters_data', 'scheduled__2023-12-05T00:00:00+00:00', '--job-id', '308', '--raw', '--subdir', 'DAGS_FOLDER/dag_openaq_catchup.py', '--cfg-path', '/tmp/tmpti8emask']
+[2023-12-12T01:14:09.474+0000] {standard_task_runner.py:85} INFO - Job 308: Subtask load_parameters_data
+[2023-12-12T01:14:11.677+0000] {task_command.py:416} INFO - Running <TaskInstance: dag_openaq_catchup.load_parameters_data scheduled__2023-12-05T00:00:00+00:00 [running]> on host 1a187d37aaef
+[2023-12-12T01:14:12.570+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_openaq_catchup' AIRFLOW_CTX_TASK_ID='load_parameters_data' AIRFLOW_CTX_EXECUTION_DATE='2023-12-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-05T00:00:00+00:00'
+[2023-12-12T01:14:12.650+0000] {main.py:102} INFO - Archivo de configuracion leido correctamente.
+[2023-12-12T01:14:12.670+0000] {utils.py:25} INFO - Obteniendo datos de https://api.openaq.org/v2/parameters...
+[2023-12-12T01:14:28.475+0000] {utils.py:73} INFO - Conexión a la base de datos establecida exitosamente.
+[2023-12-12T01:14:34.657+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 632, in __init__
+    hostport: typing.Tuple[str, int] = Connection.__get_host_address_info(host, port)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 404, in __get_host_address_info
+    response = socket.getaddrinfo(host=host, port=port, family=socket.AF_INET)
+  File "/usr/local/lib/python3.8/socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/__init__.py", line 396, in connect
+    return Connection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 698, in __init__
+    raise InterfaceError("communication error", e)
+redshift_connector.error.InterfaceError: ('communication error', gaierror(-3, 'Temporary failure in name resolution'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/scripts/main.py", line 118, in load_parameters
+    with engine.connect() as conn, conn.begin():
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/__init__.py", line 396, in connect
+    return Connection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 698, in __init__
+    raise InterfaceError("communication error", e)
+sqlalchemy.exc.InterfaceError: (redshift_connector.error.InterfaceError) ('communication error', gaierror(-3, 'Temporary failure in name resolution'))
+(Background on this error at: https://sqlalche.me/e/14/rvf5)
+[2023-12-12T01:14:36.295+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_openaq_catchup, task_id=load_parameters_data, execution_date=20231205T000000, start_date=20231212T011408, end_date=20231212T011436
+[2023-12-12T01:14:36.715+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 308 for task load_parameters_data ((redshift_connector.error.InterfaceError) ('communication error', gaierror(-3, 'Temporary failure in name resolution'))
+(Background on this error at: https://sqlalche.me/e/14/rvf5); 295)
+[2023-12-12T01:14:36.753+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-12T01:14:37.135+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

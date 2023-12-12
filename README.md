@@ -18,7 +18,7 @@ OpenAQ API Documentation Site: https://docs.openaq.org/docs
 ### Ejecucion con Docker
 Se ejecuta "docker compose up -d" en el directorio del proyecto. Para ello docker debe estar corriendo.
 Por defecto el web server es accesible por http://localhost:8080/ con usr y password "airflow", como se detalla en el archivo "docker-compose.yaml".
-Para la ejecucion de los dags se debe generar la coneccion en Airflow, segun los parametros para Redshift del archivo "config.ini".
+La coneccion a la base de datos de redshift que se utiliza se definio en el archivo "docker-compose.yaml" por lo cual no es necesario crear ninguna coneccion desde la interfaz web de airflow.
 
 ### Ejecucion como script
 Previo a ejecutar main.py, se deben ejecutar 2 scripts SQL:

@@ -10,7 +10,7 @@ from scripts.main import load_locations, load_countries, load_parameters, load_m
 default_args = {"retries": 3, "retry_delay": timedelta(minutes=1)}
 
 with DAG(
-    dag_id="dag_openaq",
+    dag_id="update_openaq_dw_hourly",
     start_date=datetime(2023, 12, 1),
     catchup=False,
     schedule_interval="0 * * * *",
@@ -21,14 +21,14 @@ with DAG(
 
     create_tables_task = PostgresOperator(
         task_id="create_tables",
-        postgres_conn_id="coderhouse_redshift",
+        postgres_conn_id="redshift",
         sql="sql/creates.sql",
         hook_params={"options": "-c search_path=nicolasmvinciguerra_coderhouse"},
     )
 
     create_stored_procedures_task = PostgresOperator(
         task_id="create_stored_procedures",
-        postgres_conn_id="coderhouse_redshift",
+        postgres_conn_id="redshift",
         sql="sql/stored_procedures.sql",
         hook_params={"options": "-c search_path=nicolasmvinciguerra_coderhouse"},
     )
