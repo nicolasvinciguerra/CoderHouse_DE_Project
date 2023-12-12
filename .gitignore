@@ -6,3 +6,5 @@
 
 #Ignora los logs
 logs/
+
+.vscode/
