@@ -280,3 +280,464 @@ File Path                                PID    Runtime      # DAGs    # Errors 
 [2023-12-05T22:06:34.773+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
 [2023-12-05T22:06:34.777+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
 [2023-12-05T22:06:47.322+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:13:38.219+0000] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-12-12T01:13:38.219+0000] {manager.py:488} INFO - Process each file at most once every 10 seconds
+[2023-12-12T01:13:38.219+0000] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-12-12T01:13:38.219+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:13:38.224+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:13:38.329+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/dag_openaq_catchup.py    169  0.04s             0           0
+/opt/airflow/dags/dag_openaq.py            172  0.03s             0           0
+================================================================================
+[2023-12-12T01:14:09.572+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py    294  0.20s             1           0  7.69s           2023-12-12T01:13:58
+/opt/airflow/dags/dag_openaq.py            296  0.09s             1           0  7.42s           2023-12-12T01:13:58
+================================================================================
+[2023-12-12T01:14:40.850+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  29.81s          2023-12-12T01:14:38
+/opt/airflow/dags/dag_openaq.py                                   1           0  29.70s          2023-12-12T01:14:38
+================================================================================
+[2023-12-12T01:15:10.921+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.78s           2023-12-12T01:15:10
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.77s           2023-12-12T01:15:10
+================================================================================
+[2023-12-12T01:15:41.180+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.56s           2023-12-12T01:15:32
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.54s           2023-12-12T01:15:32
+================================================================================
+[2023-12-12T01:16:11.464+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.53s           2023-12-12T01:16:04
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.52s           2023-12-12T01:16:04
+================================================================================
+[2023-12-12T01:16:41.515+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.62s           2023-12-12T01:16:36
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.59s           2023-12-12T01:16:36
+================================================================================
+[2023-12-12T01:17:11.542+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.59s           2023-12-12T01:17:08
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.57s           2023-12-12T01:17:08
+================================================================================
+[2023-12-12T01:17:41.671+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.60s           2023-12-12T01:17:40
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.58s           2023-12-12T01:17:40
+================================================================================
+[2023-12-12T01:18:12.324+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py    622  0.03s             1           0  0.56s           2023-12-12T01:18:02
+/opt/airflow/dags/dag_openaq.py            625  0.01s             1           0  0.54s           2023-12-12T01:18:02
+================================================================================
+[2023-12-12T01:18:38.523+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:18:38.539+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:18:42.624+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.80s           2023-12-12T01:18:34
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.78s           2023-12-12T01:18:34
+================================================================================
+[2023-12-12T01:18:53.274+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:19:16.426+0000] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-12-12T01:19:16.428+0000] {manager.py:488} INFO - Process each file at most once every 10 seconds
+[2023-12-12T01:19:16.428+0000] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-12-12T01:19:16.429+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:19:16.437+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:19:16.562+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/dag_openaq_catchup.py    170  0.05s             0           0
+/opt/airflow/dags/dag_openaq.py            173  0.04s             0           0
+================================================================================
+[2023-12-12T01:19:46.853+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.47s           2023-12-12T01:19:38
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.43s           2023-12-12T01:19:38
+================================================================================
+[2023-12-12T01:20:17.172+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.34s           2023-12-12T01:20:10
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.33s           2023-12-12T01:20:10
+================================================================================
+[2023-12-12T01:20:47.629+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.34s           2023-12-12T01:20:41
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.32s           2023-12-12T01:20:41
+================================================================================
+[2023-12-12T01:21:17.662+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.51s           2023-12-12T01:21:13
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.49s           2023-12-12T01:21:13
+================================================================================
+[2023-12-12T01:21:48.118+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.53s           2023-12-12T01:21:45
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.49s           2023-12-12T01:21:45
+================================================================================
+[2023-12-12T01:22:18.548+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.41s           2023-12-12T01:22:17
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.57s           2023-12-12T01:22:14
+================================================================================
+[2023-12-12T01:22:49.098+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py    422  0.02s             1           0  0.33s           2023-12-12T01:22:38
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.47s           2023-12-12T01:22:46
+================================================================================
+[2023-12-12T01:23:19.355+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.48s           2023-12-12T01:23:10
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.77s           2023-12-12T01:23:18
+================================================================================
+[2023-12-12T01:23:49.383+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.37s           2023-12-12T01:23:42
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.55s           2023-12-12T01:23:40
+================================================================================
+[2023-12-12T01:24:16.785+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:24:16.804+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:24:19.853+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.50s           2023-12-12T01:24:13
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.48s           2023-12-12T01:24:11
+================================================================================
+[2023-12-12T01:24:50.502+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.47s           2023-12-12T01:24:45
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.51s           2023-12-12T01:24:43
+================================================================================
+[2023-12-12T01:25:20.723+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.30s           2023-12-12T01:25:16
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.43s           2023-12-12T01:25:15
+================================================================================
+[2023-12-12T01:25:51.121+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.49s           2023-12-12T01:25:48
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.51s           2023-12-12T01:25:48
+================================================================================
+[2023-12-12T01:26:21.498+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.47s           2023-12-12T01:26:19
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.51s           2023-12-12T01:26:19
+================================================================================
+[2023-12-12T01:26:51.881+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.47s           2023-12-12T01:26:51
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.52s           2023-12-12T01:26:51
+================================================================================
+[2023-12-12T01:27:22.283+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.48s           2023-12-12T01:27:13
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.50s           2023-12-12T01:27:13
+================================================================================
+[2023-12-12T01:27:52.764+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.50s           2023-12-12T01:27:45
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.54s           2023-12-12T01:27:45
+================================================================================
+[2023-12-12T01:28:23.306+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.51s           2023-12-12T01:28:17
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.54s           2023-12-12T01:28:17
+================================================================================
+[2023-12-12T01:28:53.679+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.48s           2023-12-12T01:28:49
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.50s           2023-12-12T01:28:49
+================================================================================
+[2023-12-12T01:29:15.414+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:29:36.697+0000] {manager.py:487} INFO - Processing files using up to 2 processes at a time 
+[2023-12-12T01:29:36.698+0000] {manager.py:488} INFO - Process each file at most once every 10 seconds
+[2023-12-12T01:29:36.698+0000] {manager.py:489} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-12-12T01:29:36.698+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:29:36.704+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:29:36.814+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/dag_openaq_catchup.py    174  0.03s             0           0
+/opt/airflow/dags/dag_openaq.py            171  0.03s             0           0
+================================================================================
+[2023-12-12T01:30:07.154+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.45s           2023-12-12T01:29:59
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.46s           2023-12-12T01:29:59
+================================================================================
+[2023-12-12T01:30:37.477+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.48s           2023-12-12T01:30:30
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.50s           2023-12-12T01:30:30
+================================================================================
+[2023-12-12T01:31:07.696+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.45s           2023-12-12T01:31:02
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.47s           2023-12-12T01:31:02
+================================================================================
+[2023-12-12T01:31:38.016+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.49s           2023-12-12T01:31:34
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.51s           2023-12-12T01:31:34
+================================================================================
+[2023-12-12T01:32:08.342+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.49s           2023-12-12T01:32:06
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.52s           2023-12-12T01:32:06
+================================================================================
+[2023-12-12T01:32:38.758+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.50s           2023-12-12T01:32:38
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.52s           2023-12-12T01:32:38
+================================================================================
+[2023-12-12T01:33:09.179+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.59s           2023-12-12T01:32:59
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.61s           2023-12-12T01:32:59
+================================================================================
+[2023-12-12T01:33:39.580+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.47s           2023-12-12T01:33:31
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.50s           2023-12-12T01:33:31
+================================================================================
+[2023-12-12T01:34:09.970+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.50s           2023-12-12T01:34:03
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.52s           2023-12-12T01:34:03
+================================================================================
+[2023-12-12T01:34:37.110+0000] {manager.py:755} INFO - Searching for files in /opt/airflow/dags
+[2023-12-12T01:34:37.118+0000] {manager.py:758} INFO - There are 2 files in /opt/airflow/dags
+[2023-12-12T01:34:40.326+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.46s           2023-12-12T01:34:35
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.33s           2023-12-12T01:34:38
+================================================================================
+[2023-12-12T01:35:10.732+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.52s           2023-12-12T01:35:08
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.43s           2023-12-12T01:35:10
+================================================================================
+[2023-12-12T01:35:41.085+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.43s           2023-12-12T01:35:40
+/opt/airflow/dags/dag_openaq.py            645  0.01s             1           0  0.32s           2023-12-12T01:35:30
+================================================================================
+[2023-12-12T01:36:11.098+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.45s           2023-12-12T01:36:01
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.26s           2023-12-12T01:36:02
+================================================================================
+[2023-12-12T01:36:41.286+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.60s           2023-12-12T01:36:34
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.58s           2023-12-12T01:36:34
+================================================================================
+[2023-12-12T01:37:11.677+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py                           1           0  0.50s           2023-12-12T01:37:06
+/opt/airflow/dags/dag_openaq.py                                   1           0  0.48s           2023-12-12T01:37:06
+================================================================================
+[2023-12-12T01:37:41.906+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/dag_openaq_catchup.py    882  1.06s             1           0  3.67s           2023-12-12T01:37:30
+/opt/airflow/dags/dag_openaq.py            879  1.41s             1           0  3.32s           2023-12-12T01:37:30
+================================================================================
+[2023-12-12T01:38:05.770+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:38:05.769+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:38:05.770+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:38:07.283+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:38:07.327+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-12T01:38:07.354+0000] {manager.py:469} INFO - Exiting gracefully upon receiving signal 15

@@ -1,0 +1,68 @@
+[2023-12-12T01:37:57.611+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: update_openaq_dw_hourly_catchup.load_stations_data scheduled__2023-12-11T00:00:00+00:00 [queued]>
+[2023-12-12T01:37:57.670+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: update_openaq_dw_hourly_catchup.load_stations_data scheduled__2023-12-11T00:00:00+00:00 [queued]>
+[2023-12-12T01:37:57.672+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 4
+[2023-12-12T01:37:58.167+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): load_stations_data> on 2023-12-11 00:00:00+00:00
+[2023-12-12T01:37:58.242+0000] {standard_task_runner.py:57} INFO - Started process 920 to run task
+[2023-12-12T01:37:58.282+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'update_openaq_dw_hourly_catchup', 'load_stations_data', 'scheduled__2023-12-11T00:00:00+00:00', '--job-id', '420', '--raw', '--subdir', 'DAGS_FOLDER/dag_openaq_catchup.py', '--cfg-path', '/tmp/tmpnw0vkh12']
+[2023-12-12T01:37:58.335+0000] {standard_task_runner.py:85} INFO - Job 420: Subtask load_stations_data
+[2023-12-12T01:37:58.808+0000] {task_command.py:416} INFO - Running <TaskInstance: update_openaq_dw_hourly_catchup.load_stations_data scheduled__2023-12-11T00:00:00+00:00 [running]> on host 2be5b1614f4e
+[2023-12-12T01:37:59.032+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='update_openaq_dw_hourly_catchup' AIRFLOW_CTX_TASK_ID='load_stations_data' AIRFLOW_CTX_EXECUTION_DATE='2023-12-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-11T00:00:00+00:00'
+[2023-12-12T01:37:59.041+0000] {main.py:22} INFO - Archivo de configuracion leido correctamente.
+[2023-12-12T01:37:59.042+0000] {utils.py:25} INFO - Obteniendo datos de https://api.openaq.org/v2/locations...
+[2023-12-12T01:38:02.368+0000] {utils.py:73} INFO - Conexión a la base de datos establecida exitosamente.
+[2023-12-12T01:38:04.634+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses
+[2023-12-12T01:38:04.753+0000] {process_utils.py:131} INFO - Sending 15 to group 920. PIDs of all processes in the group: [920]
+[2023-12-12T01:38:04.770+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 920
+[2023-12-12T01:38:04.774+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-12-12T01:38:04.852+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py:736 UserWarning: DB-API extension cursor.connection used
+[2023-12-12T01:38:05.121+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 1767, in execute
+    ps = cache["ps"][key]
+KeyError: ('TRUNCATE TABLE stg_locations;', ())
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/scripts/main.py", line 43, in load_locations
+    conn.execute("TRUNCATE TABLE stg_locations;")
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1370, in execute
+    return self._exec_driver_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1674, in _exec_driver_sql
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2138, in _handle_dbapi_exception
+    util.raise_(exc_info[1], with_traceback=exc_info[2])
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/cursor.py", line 248, in execute
+    raise e
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/cursor.py", line 241, in execute
+    self._c.execute(self, operation, args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 1848, in execute
+    self.handle_messages(cursor)
+  File "/home/airflow/.local/lib/python3.8/site-packages/redshift_connector/core.py", line 2121, in handle_messages
+    buffer = self._read(5)
+  File "/usr/local/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/lib/python3.8/ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/lib/python3.8/ssl.py", line 1132, in read
+    return self._sslobj.read(len, buffer)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-12-12T01:38:05.247+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=update_openaq_dw_hourly_catchup, task_id=load_stations_data, execution_date=20231211T000000, start_date=20231212T013757, end_date=20231212T013805
+[2023-12-12T01:38:05.397+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 420 for task load_stations_data (Task received SIGTERM signal; 920)
+[2023-12-12T01:38:05.535+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=920, status='terminated', exitcode=1, started='01:37:58') (920) terminated with exit code 1
+[2023-12-12T01:38:05.568+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 143
+[2023-12-12T01:38:05.740+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
