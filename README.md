@@ -32,7 +32,6 @@ En caso de que no hayan datos para el dia especificado o bien ningun pais este p
 Ejemplo de email de alerta para el parametro pm1:
 ![image](https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/ebc52b12-3fa4-45ff-a58b-affc4bb558c1)
 
-
 Log de la ejecucion:
 ![image](https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/e9a3c6a7-bdbc-45d6-837f-374f08a3df88)
 
