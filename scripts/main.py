@@ -1,5 +1,6 @@
 from configparser import ConfigParser
 import pandas as pd
+import json
 from datetime import datetime, timedelta
 from utils import *
 import logging
@@ -166,6 +167,58 @@ def load_measures(config_file, start_date, end_date):
         logging.info(f"Ejecutando query {query}...")
         conn.execute(query)
         logging.info(f"Se ejecuto correctamente la query: {query}")
+
+
+def alert_avg_values(config_file, exec_date, sender_email, private_key):
+    """
+    Send alerting emails with countries whose setting parameters are above the average.
+    """
+
+    # Config file
+    config = ConfigParser()
+    config.read(config_file)
+    logging.info("Archivo de configuracion leido correctamente.")
+
+    # config variables
+    parameters = config["alerting"]["parameters"]
+    parameters_list = [p.strip() for p in parameters.split(",")]
+    email_recipients = config["alerting"]["email_recipients"]
+    email_recipients_list = [e.strip() for e in email_recipients.split(",")]
+
+    engine = connect_to_db(config, "redshift_credentials")
+    schema = config["redshift_credentials"]["schema"]
+    with engine.connect() as conn, conn.begin():
+        for parameter in parameters_list:
+            query = f"""
+                    select fm.country_code, date(fm.date_utc), fm.parameter_code, avg(fm.value)
+                    from {schema}.fact_measure fm
+                    where date(fm.date_utc) = {exec_date}  and fm.parameter_code={parameter}
+                    group by fm.country_code, date(fm.date_utc), fm.parameter_code
+                    having avg(fm.value) > (select avg(value)
+						                    from {schema}.fact_measure
+						                    where date(date_utc) = {exec_date}  and parameter_code={parameter})
+                    """
+            data = pd.read_sql_query(query, conn)
+            logging.info(
+                f"Datos leidos correctamente para {parameter} con fecha {exec_date}."
+            )
+            if data.count(axis=1) > 1:
+                email_subject = f"ALERT ON {parameter}"
+                email_body = f"Countries with {parameter} value above the daily average ({exec_date}): \n {data}"
+                send_gmail_email(
+                    sender_email,
+                    private_key,
+                    email_subject,
+                    email_body,
+                    email_recipients_list,
+                )
+                logging.info(
+                    f"Emails de alerta para {parameter} con fecha {exec_date} enviado."
+                )
+            else:
+                logging.info(
+                    f"No se han enviado emails de alerta para {parameter} con fecha {exec_date} por no haber datos que cumplan la regla."
+                )
 
 
 if __name__ == "__main__":

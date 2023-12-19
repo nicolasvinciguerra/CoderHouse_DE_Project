@@ -32,13 +32,14 @@ SORTKEY (id); --si bien es comun filtrar por el nombre del parametro, su id lo i
 --DROP TABLE IF EXISTS fact_measure;
 CREATE TABLE IF NOT EXISTS nicolasmvinciguerra_coderhouse.fact_measure (
     location_id INTEGER,
+    country_code VARCHAR(5),
     parameter_code VARCHAR(20),
     value FLOAT,
     date_local TIMESTAMP,
     date_utc TIMESTAMP DISTKEY, --es el campo mas comunmente utilizado para el filtrado
     updated_at timestamp without time zone
     )
-SORTKEY (date_utc,location_id,parameter_code);
+SORTKEY (date_utc,country_code,parameter_code);
 
 
 --STAGING TABLES
