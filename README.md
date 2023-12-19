@@ -30,6 +30,7 @@ El DAG "email_alerting_avg_daily" envia diariamente alertas via email de paises 
 En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email de alerta.
 
 <img width="570" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/dd65e295-a37e-4368-9e94-835f6c995e86">
+<img width="1044" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/029cf97e-3c8a-4a14-9f8e-5499b5e3b487">
 
 
 ## Libraries
