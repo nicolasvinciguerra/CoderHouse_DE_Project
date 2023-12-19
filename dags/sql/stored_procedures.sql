@@ -77,14 +77,15 @@ begin
         WHEN MATCHED THEN
             UPDATE SET
                 location_id = stg_measurements.locationid,
+                country_code = stg_measurements.country,
                 parameter_code = stg_measurements.parameter,
                 value = stg_measurements.value,
                 date_local = stg_measurements.date_local,
                 date_utc = stg_measurements.date_utc,
                 updated_at = current_timestamp
         WHEN NOT MATCHED THEN
-            INSERT (location_id, parameter_code, value, date_local, date_utc)
-            VALUES (stg_measurements.locationid, stg_measurements.parameter, 
+            INSERT (location_id, country_code, parameter_code, value, date_local, date_utc)
+            VALUES (stg_measurements.locationid, stg_measurements.country, stg_measurements.parameter, 
                 stg_measurements.value, stg_measurements.date_local, stg_measurements.date_utc);
 end;
 $$

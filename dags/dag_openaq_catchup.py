@@ -11,9 +11,9 @@ default_args = {"retries": 3, "retry_delay": timedelta(minutes=1)}
 
 with DAG(
     dag_id="update_openaq_dw_hourly_catchup",
-    start_date=datetime(2023, 12, 3),
+    start_date=datetime(2023, 12, 19),
     catchup=True,
-    schedule_interval="@daily",
+    schedule_interval="0 * * * *",
     default_args=default_args,
 ) as dag:
     # task con dummy operator
@@ -36,7 +36,7 @@ with DAG(
     load_locations_data_task = PythonOperator(
         task_id="load_stations_data",
         python_callable=load_locations,
-        op_kwargs={"config_file": "/opt/airflow/config/config.ini", "limit": "1500"},
+        op_kwargs={"config_file": "/opt/airflow/config/config.ini", "limit": "2500"},
     )
 
     load_countries_data_task = PythonOperator(

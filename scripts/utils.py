@@ -1,8 +1,13 @@
+from ast import List
+from atexit import _run_exitfuncs
 import logging
+from re import L
 import requests
 from configparser import ConfigParser
 import sqlalchemy as sa
 from sqlalchemy.engine.url import URL
+import smtplib
+from email.message import EmailMessage
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -99,3 +104,24 @@ def load_to_sql(df, table_name, engine, if_exists="replace"):
     except Exception as e:
         logging.error(f"Error al cargar los datos en la base de datos: {e}")
         raise Exception(f"Error al cargar los datos en la base de datos: {e}")
+
+
+def send_gmail_email(
+    sender_email, private_key, subject, body_text, recipients_email: list
+):
+    try:
+        email = EmailMessage()
+        email["From"] = sender_email
+        email["Subject"] = subject
+        email.set_content(body_text, subtype="html")
+        x = smtplib.SMTP("smtp.gmail.com", 587)
+        x.starttls()
+        x.login(sender_email, private_key)
+        for recipient in recipients_email:
+            email["To"] = recipient
+            x.send_message(email)
+            logging.info(f"Email enviado correctamente a {recipient}.")
+        x.quit()
+    except Exception as e:
+        logging.error(f"Error al enviar email: {e}")
+        raise Exception(f"Error al enviar email: {e}")

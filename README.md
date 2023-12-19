@@ -25,6 +25,10 @@ Previo a ejecutar main.py, se deben ejecutar 2 scripts SQL:
 1- Ejecutar el script SQL "creates.sql" del directorio '/dags/sql'. El mismo contiene la query sql para crear las tablas de staging (empiezan con el prefijo 'stg') y es donde se almacen temporalmente los datos extraidos desde la API de OpenAQ antes de su insersion en el modelo dimensional, como asi tambien las tablas del modelo estrella del DW: dos de dimensiones (con el prefijo 'dim'), y una de hechos (con el prefijo 'fact').
 2- Ejecutar el script SQL "stored_procedures.sql" del directorio '/dags/sql'. El mismo contiene 4 procedimientos almacenados que son ejecutados desde el flujo del programa para actualizar las tablas del modelo dimensional a partir de los datos de las tablas de staging en un determinando momento.
 
+### Envio de alertas via email
+El DAG "email_alerting_avg_daily" envia diariamente alertas via email de paises con valores diarios promedios por encima del promedio general para todos los parametros relativos a la calidad del aire que se hayan especificado en el archivo de configuracion ("config/config.ini"). El envio de emails se realizara a los emails especificados en el mismo archivo de configuracion.
+En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email de alerta.
+
 ## Libraries
 Este proyecto utiliza las siguientes librerias:
 - sqlalchemy-redshift
