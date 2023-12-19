@@ -30,10 +30,11 @@ El DAG "email_alerting_avg_daily" envia diariamente alertas via email de paises 
 En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email de alerta.
 
 Ejemplo de email de alerta para el parametro pm1:
-<img width="1066" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/426f8f2e-a9a3-4c14-a167-89869e3bb8d3">
+![image](https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/ebc52b12-3fa4-45ff-a58b-affc4bb558c1)
+
 
 Log de la ejecucion:
-<img width="1062" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/50335c37-9423-44c3-aad5-e1659db6d85b">
+![image](https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/e9a3c6a7-bdbc-45d6-837f-374f08a3df88)
 
 ## Libraries
 Este proyecto utiliza las siguientes librerias:
