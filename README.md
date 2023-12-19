@@ -27,7 +27,7 @@ Previo a ejecutar main.py, se deben ejecutar 2 scripts SQL:
 
 ### Envio de alertas via email
 El DAG "email_alerting_avg_daily" envia diariamente alertas via email de paises con valores diarios promedios por encima del promedio general para todos los parametros relativos a la calidad del aire que se hayan especificado en el archivo de configuracion ("config/config.ini"). El envio de emails se realizara a los emails especificados en el mismo archivo de configuracion.
-En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email.
+En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email de alerta.
 
 ## Libraries
 Este proyecto utiliza las siguientes librerias:

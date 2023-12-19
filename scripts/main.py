@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 import pandas as pd
 import json
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from utils import *
 import logging
 
@@ -192,19 +192,23 @@ def alert_avg_values(config_file, exec_date, sender_email, private_key):
             query = f"""
                     select fm.country_code, date(fm.date_utc), fm.parameter_code, avg(fm.value)
                     from {schema}.fact_measure fm
-                    where date(fm.date_utc) = {exec_date}  and fm.parameter_code={parameter}
+                    where date(fm.date_utc) = '{exec_date}'  and fm.parameter_code='{parameter}'
                     group by fm.country_code, date(fm.date_utc), fm.parameter_code
                     having avg(fm.value) > (select avg(value)
 						                    from {schema}.fact_measure
-						                    where date(date_utc) = {exec_date}  and parameter_code={parameter})
+						                    where date(date_utc) = '{exec_date}'  and parameter_code='{parameter}')
                     """
             data = pd.read_sql_query(query, conn)
             logging.info(
-                f"Datos leidos correctamente para {parameter} con fecha {exec_date}."
+                f"Datos leidos correctamente para {parameter} con fecha {exec_date}. Dataframe: {data}."
             )
-            if data.count(axis=1) > 1:
-                email_subject = f"ALERT ON {parameter}"
-                email_body = f"Countries with {parameter} value above the daily average ({exec_date}): \n {data}"
+            if not data.empty:
+                email_subject = f"[ALERT] Abnormal values on {parameter}"
+                email_body = f"""\
+                            <html><head></head><body>
+                            <p>Countries with {parameter} value above the daily average for ({exec_date}):</p>
+                            {data.to_html(index=False)}
+                            </body></html>"""
                 send_gmail_email(
                     sender_email,
                     private_key,
