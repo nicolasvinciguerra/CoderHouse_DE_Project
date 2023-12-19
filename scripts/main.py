@@ -1,7 +1,6 @@
 from configparser import ConfigParser
 import pandas as pd
-import json
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 from utils import *
 import logging
 
