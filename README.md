@@ -29,7 +29,7 @@ Previo a ejecutar main.py, se deben ejecutar 2 scripts SQL:
 El DAG "email_alerting_avg_daily" envia diariamente alertas via email de paises con valores diarios promedios por encima del promedio general para todos los parametros relativos a la calidad del aire que se hayan especificado en el archivo de configuracion ("config/config.ini"). El envio de emails se realizara a los emails especificados en el mismo archivo de configuracion.
 En caso de que no hayan datos para el dia especificado o bien ningun pais este por encima del promedio no se enviara el email de alerta.
 
-<img width="646" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/c7fedd7b-c776-4a33-a9fa-abed4857dcc1">
+<img width="570" alt="image" src="https://github.com/nicolasvinciguerra/CoderHouse_DE_Project/assets/21110963/dd65e295-a37e-4368-9e94-835f6c995e86">
 
 
 ## Libraries
@@ -40,4 +40,7 @@ Este proyecto utiliza las siguientes librerias:
 - pandas
 - datetime
 - logging
+- smtplib
+- email
+- airflow
 - python formatted with black (python3 -m black)
